@@ -8,9 +8,20 @@
         WindowState="Maximized"
         Title="MainWindow" Height="1080" Width="1920">
     <Grid>
-        <StackPanel x:Name="GridPanel" Background="Black" Margin="91,49,79,299"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FFFF3636" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <StackPanel x:Name="GridPanel" Margin="91,85,79,299"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="91,880,0,0" VerticalAlignment="Top" Height="74" Width="298"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="1543,875,0,0" VerticalAlignment="Top" Height="74" Width="298"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="817,875,0,0" VerticalAlignment="Top" Height="74" Width="298"/>
+        <Button x:Name="addBut" Content="Button" HorizontalAlignment="Left" Margin="1573,880,0,0" VerticalAlignment="Top" Height="74" Width="298" Click="addBut_Click"/>
+        <Button x:Name="StartBut" Content="Button" HorizontalAlignment="Center" Margin="0,880,0,0" VerticalAlignment="Top" Height="74" Width="298" Click="StartBut_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,373,0,0" VerticalAlignment="Top" Height="104" Width="54"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="1856,373,0,0" VerticalAlignment="Top" Height="104" Width="54"/>
+        <Button x:Name="DownBut" Content="Button" HorizontalAlignment="Center" Margin="0,784,0,0" VerticalAlignment="Top" Height="48" Width="130" Click="DownBut_Click"/>
+        <Slider x:Name="ScaleSlider" HorizontalAlignment="Left" Margin="1262,908,0,0" VerticalAlignment="Top" Width="120" ValueChanged="Slider_ValueChanged" Minimum="10" Maximum="100"/>
+        <Button x:Name="UpBut" Content="Button" HorizontalAlignment="Left" Margin="898,10,0,0" VerticalAlignment="Top" Height="50" Width="136" Click="UpBut_Click_1"/>
     </Grid>
 </Window>
