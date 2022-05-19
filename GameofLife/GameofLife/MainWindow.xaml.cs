@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GameofLife
 {
@@ -20,7 +8,7 @@ namespace GameofLife
     /// </summary>
     public partial class MainWindow : Window
     {
-        GridHandler gridHandler = new GridHandler(100, 100);
+        GridHandler gridHandler = new GridHandler(300, 300);
         public bool isOpening = true;
         public StackPanel[] stackPanels = new StackPanel[50];
         public MainWindow()
@@ -31,7 +19,7 @@ namespace GameofLife
                 stackPanels[i] = new StackPanel();
             }
 
-            printGrid(0, 0,50);
+            printGrid(0, 0,20);
 
 
         }
@@ -102,13 +90,15 @@ namespace GameofLife
             GridPanel.Children.Clear();
 
         }
-        private void addBut_Click(object sender, RoutedEventArgs e)
+        private void stepBut_Click(object sender, RoutedEventArgs e)
         {
+            gridHandler.step();
         }
 
         private void DownBut_Click(object sender, RoutedEventArgs e)
         {
             gridHandler.moveDown();
+
         }
 
     
@@ -116,6 +106,16 @@ namespace GameofLife
         private void UpBut_Click_1(object sender, RoutedEventArgs e)
         {
             gridHandler.moveUp();
+        }
+
+        private void LeftBut_Click(object sender, RoutedEventArgs e)
+        {
+            gridHandler.moveLeft();
+        }
+
+        private void RIghtBut_Click(object sender, RoutedEventArgs e)
+        {
+            gridHandler.moveRight();
         }
     }
 

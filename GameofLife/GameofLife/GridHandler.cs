@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 namespace GameofLife
@@ -78,6 +79,7 @@ namespace GameofLife
                     if (((SolidColorBrush)b.Background).Color == Colors.White)
                     {
                         buttons[i, j].Background = new SolidColorBrush(Colors.Black);
+                        
                         buttons[i + 1, j].Background = new SolidColorBrush(Colors.White);
                     }
                 }
@@ -100,9 +102,9 @@ namespace GameofLife
                 }
             }
 
-        public void moveLeft()
+        public void moveRight()
         {
-            for (int i = 0; i < x - 1; i++)
+            for (int i = 0; i < x; i++)
             {
 
                 for (int j = y-1; j > 0; j--)
@@ -111,11 +113,78 @@ namespace GameofLife
                     if (((SolidColorBrush)b.Background).Color == Colors.White)
                     {
                         buttons[i, j].Background = new SolidColorBrush(Colors.Black);
-                        buttons[i, j-1].Background = new SolidColorBrush(Colors.White);
+                        buttons[i, j+1].Background = new SolidColorBrush(Colors.White);
+                      
                     }
                 }
             }
         }
+        public void moveLeft()
+        {
+            for (int i = 0; i < x; i++)
+            {
+
+                for (int j = 0; j < y-1; j++)
+                {
+                    Button b = buttons[i, j];
+                    if (((SolidColorBrush)b.Background).Color == Colors.White)
+                    {
+                        buttons[i, j].Background = new SolidColorBrush(Colors.Black);
+                        buttons[i, j - 1].Background = new SolidColorBrush(Colors.White);
+                    }
+                }
+            }
+        }
+
+        public void step()
+        {
+            for(int i = 1; i< x-1; i++)
+            {
+
+                for( int j = 1; j < y-1; j++)
+                {
+                    Button b = buttons[i, j];
+                    if (((SolidColorBrush)b.Background).Color == Colors.White)
+                    {
+                       if(cellChecker(i, j) < 2)
+                        {
+                            b.Background = new SolidColorBrush(Colors.Black);
+                        }
+                       else if(cellChecker(i, j) >= 4)
+                        {
+                            b.Background = new SolidColorBrush(Colors.Black);
+                        }
+                    }
+                    else
+                    {
+                        if (cellChecker(i, j)==3)
+                        {
+                            b.Background = new SolidColorBrush(Colors.White);
+                        }
+                    }
+                }
+            }
+        }
+
+        public int cellChecker(int x, int y)
+        {
+            int count = 0;
+            for (int i = -1; i <= 1; i++)
+            {
+                for (int j = -1; j <= 1; j++)
+                {
+                    Button b = getButton(x + i, y + j);
+
+                    if (((SolidColorBrush)b.Background).Color == Colors.White)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+       
     }
     
 }
