@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace GameofLife
 {
@@ -8,7 +10,7 @@ namespace GameofLife
     /// </summary>
     public partial class MainWindow : Window
     {
-        GridHandler gridHandler = new GridHandler(300, 300);
+        GridHandler gridHandler = new GridHandler(10, 10);
         public bool isOpening = true;
         public bool isLoading = true;
         public StackPanel[] stackPanels = new StackPanel[50];
@@ -20,7 +22,7 @@ namespace GameofLife
                 stackPanels[i] = new StackPanel();
             }
 
-          // printGrid(0, 0,20);
+          
            isLoading = false;
 
 
@@ -47,7 +49,7 @@ namespace GameofLife
                     b.Width = scale;
                   //  stackPanels[x % stackPanels.Length].Children.Remove(b);
                     
-                        stackPanels[x % stackPanels.Length].Children.Remove((Button)b);
+                       
 
                         stackPanels[x % stackPanels.Length].Children.Add(b);
                        
@@ -61,7 +63,7 @@ namespace GameofLife
             }
         }
 
-        public void RemoveGrid(int xOffset, int yOffset, int scale)
+        public void RemoveGrid()
         {
 
             int x = gridHandler.getX();
@@ -69,30 +71,27 @@ namespace GameofLife
             GridPanel.Children.Clear();
             gridHandler = new GridHandler(300,300);
 
-            /*for (int i = x / 2; i < x; i++)
-            {
-
-                stackPanels[x % stackPanels.Length].Orientation = Orientation.Horizontal;
-
-                GridPanel.Children.Remove(stackPanels[x % stackPanels.Length]);
-
-
-                for (int j = y / 2; j < y; j++)
-                {
-                    Button b = gridHandler.getButton(i, j);
-                    b.Height = scale;
-                    b.Width = scale;
-                    stackPanels[x % stackPanels.Length].Children.Remove(b);
-                   
-
-
-                    }
-
-
-                GridPanel.Children.Clear();
-            }*/
+          
 
             }
+
+        public void ClearScreen()
+        {
+            int x = gridHandler.getX();
+            int y = gridHandler.getY();
+            for (int i = 1; i < x - 1; i++)
+            {
+
+                for (int j = 1; j < y - 1; j++)
+                {
+                    Button b = gridHandler.getButton(i, j);
+                    if (((SolidColorBrush)b.Background).Color == Colors.White)
+                    {
+                        b.Background = new SolidColorBrush(Colors.Black);
+                    }
+                }
+            }
+        }
         
 
 
@@ -100,32 +99,42 @@ namespace GameofLife
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (isLoading == false) {
+            if (isLoading == false)
+            { var aliveCells = new List<int>();
                 int val = (int)ScaleSlider.Value;
                 SliderVal.Content = val.ToString();
-        }
+                int x = gridHandler.getX();
+                int y = gridHandler.getY();
+                for (int i = 1; i < x - 1; i++)
+                {
+
+                    for (int j = 1; j < y - 1; j++)
+                    {
+                        Button b = gridHandler.getButton(i, j);
+                        if (((SolidColorBrush)b.Background).Color == Colors.White)
+                        {
+                            aliveCells.Add(i);
+                            aliveCells.Add(j);
+                        }
+                    }
+                }
+                RemoveGrid();
+                printGrid(0, 0, val);
+                gridHandler.ReColor(aliveCells);
+                aliveCells.Clear();
+            }
         }
 
         private void StartBut_Click(object sender, RoutedEventArgs e)
         {
-
+            for(int i = 0; i< 10; i++)
+            {
+                gridHandler.step();
+            }
+           
             
         }
-        public void reload()
-        {
-          
-            for (int i = 0; i < stackPanels.Length; i++)
-            {
-                if (stackPanels[i].Children.Count > 0)
-                {
-                    stackPanels[i].Children.RemoveAt(stackPanels[i].Children.Count - 1);
-                }
-                stackPanels[i].Children.Clear();
-                stackPanels[i] = new StackPanel();
-            }
-            GridPanel.Children.Clear();
-
-        }
+       
         private void stepBut_Click(object sender, RoutedEventArgs e)
         {
             gridHandler.step();
@@ -154,16 +163,11 @@ namespace GameofLife
             gridHandler.moveRight();
         }
 
-        private void LoadGridBut_Click(object sender, RoutedEventArgs e)
-        {
-           // LoadGridBut.Visibility = Visibility.Hidden;
-            //ScaleSlider.Visibility = Visibility.Hidden;
-            printGrid(0,0,(int)ScaleSlider.Value);
-        }
+      
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            RemoveGrid(0, 0, 10);
+            ClearScreen();
         }
     }
 

@@ -65,7 +65,7 @@ namespace GameofLife
             }
         }
 
-        public void moveDown()
+        public void moveUp()
         {
             for (int i = x - 1; i > 0; i--)
             {
@@ -82,12 +82,12 @@ namespace GameofLife
                 }
             }
         }
-            public void moveUp()
+            public void moveDown()
             {
                 for (int i =0; i <x-1; i++)
                 {
 
-                    for (int j = 0; j < y; j++)
+                    for (int j = 0; j < y-1; j++)
                     {
                         Button b = buttons[i, j];
                         if (((SolidColorBrush)b.Background).Color == Colors.White)
@@ -99,9 +99,9 @@ namespace GameofLife
                 }
             }
 
-        public void moveRight()
+        public void moveLeft()
         {
-            for (int i = 0; i < x; i++)
+            for (int i = 0; i < x-1; i++)
             {
 
                 for (int j = y-1; j > 0; j--)
@@ -116,7 +116,7 @@ namespace GameofLife
                 }
             }
         }
-        public void moveLeft()
+        public void moveRight()
         {
             for (int i = 0; i < x; i++)
             {
@@ -135,6 +135,9 @@ namespace GameofLife
 
         public void step()
         {
+
+            var listOfDeadCells = new List<int>();
+            var listOfAliveCells = new List<int>();
             for(int i = 1; i< x-1; i++)
             {
 
@@ -145,22 +148,27 @@ namespace GameofLife
                     {
                        if(cellChecker(i, j) < 2)
                         {
-                            b.Background = new SolidColorBrush(Colors.Black);
+                            listOfDeadCells.Add(i);
+                            listOfDeadCells.Add(j);
                         }
                        else if(cellChecker(i, j) >= 4)
                         {
-                            b.Background = new SolidColorBrush(Colors.Black);
+                            
+                            listOfDeadCells.Add(i);
+                            listOfDeadCells.Add(j);
                         }
                     }
                     else
                     {
                       if (cellChecker(i, j)==2)
                         {
-                            b.Background = new SolidColorBrush(Colors.White);
+                            listOfAliveCells.Add(i);
+                            listOfAliveCells.Add(j);
                         }
                     }
                 }
             }
+            ReColor(listOfAliveCells, listOfDeadCells);
         }
 
         public int cellChecker(int x, int y)
@@ -183,7 +191,28 @@ namespace GameofLife
             return count;
         }
 
-       
+        public void ReColor(List<int> alive, List<int> dead)
+        {
+            for (int i = 0; i < alive.Count; i+=2)
+            {
+                getButton(alive[i], alive[i + 1]).Background = new SolidColorBrush(Colors.White);
+            }
+            for (int i = 0; i < dead.Count; i += 2)
+            {
+                getButton(dead[i], dead[i + 1]).Background =  new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        public void ReColor(List<int> alive)
+        {
+            for (int i = 0; i < alive.Count; i += 2)
+            {
+                getButton(alive[i], alive[i + 1]).Background = new SolidColorBrush(Colors.White);
+            }
+         
+        }
+
+
     }
     
 }

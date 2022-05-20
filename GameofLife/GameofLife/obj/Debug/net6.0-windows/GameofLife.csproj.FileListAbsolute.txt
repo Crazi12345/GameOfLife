@@ -4,7 +4,6 @@ C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\
 C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\GameofLife\bin\Debug\net6.0-windows\GameofLife.dll
 C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\GameofLife\bin\Debug\net6.0-windows\ref\GameofLife.dll
 C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\GameofLife\bin\Debug\net6.0-windows\GameofLife.pdb
-C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\GameofLife\obj\Debug\net6.0-windows\GameofLife.csproj.AssemblyReference.cache
 C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\GameofLife\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\GameofLife\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\GameofLife\obj\Debug\net6.0-windows\GameofLife_MarkupCompile.cache
@@ -19,3 +18,4 @@ C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\
 C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\GameofLife\obj\Debug\net6.0-windows\ref\GameofLife.dll
 C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\GameofLife\obj\Debug\net6.0-windows\GameofLife.pdb
 C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\GameofLife\obj\Debug\net6.0-windows\GameofLife.genruntimeconfig.cache
+C:\Users\patri\Skrivebord\Personal-Projects\C#\gameOfLife\GameOfLife\GameofLife\GameofLife\obj\Debug\net6.0-windows\GameofLife.csproj.AssemblyReference.cache

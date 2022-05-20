@@ -8,10 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="index.jpg" />
     <None Remove="Meme_Man_on_transparent_background.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="index.jpg" />
     <Resource Include="Meme_Man_on_transparent_background.png" />
   </ItemGroup>
 
