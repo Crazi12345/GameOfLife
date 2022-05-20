@@ -20,16 +20,13 @@ namespace GameofLife
             this.y = y;
         }
 
-        private Button[,] generateButtons(int x, int y)
+        public Button[,] generateButtons(int x, int y)
         {
             Button[,] button_list = new Button[x, y];
             for (int i = 0; i < x; i++)
             {
                 for (int j = 0; j < y; j++) {
                   Button b = new Button();
-                    b.Height = 50;
-                    b.Width = 50;
-                   
                     b.Background = new SolidColorBrush(Colors.Black);
                     b.Click += new EventHandler(ChangeColor).Invoke;
                     button_list[i, j] = b;
@@ -157,7 +154,7 @@ namespace GameofLife
                     }
                     else
                     {
-                        if (cellChecker(i, j)==3)
+                      if (cellChecker(i, j)==2)
                         {
                             b.Background = new SolidColorBrush(Colors.White);
                         }
@@ -168,17 +165,19 @@ namespace GameofLife
 
         public int cellChecker(int x, int y)
         {
-            int count = 0;
+            int count = -1;
             for (int i = -1; i <= 1; i++)
             {
                 for (int j = -1; j <= 1; j++)
                 {
                     Button b = getButton(x + i, y + j);
 
+
                     if (((SolidColorBrush)b.Background).Color == Colors.White)
                     {
                         count++;
                     }
+                  
                 }
             }
             return count;

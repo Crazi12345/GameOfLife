@@ -7,21 +7,22 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         Title="MainWindow" Height="1080" Width="1920">
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Black"/>
-                <GradientStop Color="#FFFF3636" Offset="1"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="/Meme_Man_on_transparent_background.png" Stretch="None" TileMode="Tile"/>
         </Grid.Background>
-        <StackPanel x:Name="GridPanel" Margin="91,85,79,299"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="91,880,0,0" VerticalAlignment="Top" Height="74" Width="298"/>
-        <Button x:Name="stepBut" Content="Button" HorizontalAlignment="Left" Margin="1573,880,0,0" VerticalAlignment="Top" Height="74" Width="298" Click="stepBut_Click"/>
-        <Button x:Name="StartBut" Content="Button" HorizontalAlignment="Center" Margin="0,880,0,0" VerticalAlignment="Top" Height="74" Width="298" Click="StartBut_Click"/>
-        <Button x:Name="LeftBut" Content="Button" HorizontalAlignment="Left" Margin="10,373,0,0" VerticalAlignment="Top" Height="104" Width="54" Click="LeftBut_Click"/>
-        <Button x:Name="RIghtBut" Content="Button" HorizontalAlignment="Left" Margin="1856,373,0,0" VerticalAlignment="Top" Height="104" Width="54" Click="RIghtBut_Click"/>
-        <Button x:Name="DownBut" Content="Button" HorizontalAlignment="Center" Margin="0,784,0,0" VerticalAlignment="Top" Height="48" Width="130" Click="DownBut_Click"/>
-        <Slider x:Name="ScaleSlider" HorizontalAlignment="Left" Margin="1262,908,0,0" VerticalAlignment="Top" Width="120" ValueChanged="Slider_ValueChanged" Minimum="10" Maximum="100"/>
-        <Button x:Name="UpBut" Content="Button" HorizontalAlignment="Left" Margin="898,10,0,0" VerticalAlignment="Top" Height="50" Width="136" Click="UpBut_Click_1"/>
+        <StackPanel x:Name="GridPanel" Margin="91,85,79,299">
+           
+        </StackPanel>
+        <Button Content="Clear" HorizontalAlignment="Left" Margin="91,880,0,0" VerticalAlignment="Top" Height="74" Width="298" Click="Button_Click"/>
+        <Button x:Name="stepBut" Content="Step" HorizontalAlignment="Left" Margin="1573,880,0,0" VerticalAlignment="Top" Height="74" Width="298" Click="stepBut_Click"/>
+        <Button x:Name="StartBut" Content="Start" HorizontalAlignment="Center" Margin="0,880,0,0" VerticalAlignment="Top" Height="74" Width="298" Click="StartBut_Click"/>
+        <Button x:Name="LeftBut" Content="Left" HorizontalAlignment="Left" Margin="10,373,0,0" VerticalAlignment="Top" Height="104" Width="54" Click="LeftBut_Click"/>
+        <Button x:Name="RIghtBut" Content="Right" HorizontalAlignment="Left" Margin="1856,373,0,0" VerticalAlignment="Top" Height="104" Width="54" Click="RIghtBut_Click"/>
+        <Button x:Name="DownBut" Content="Down" HorizontalAlignment="Center" Margin="0,784,0,0" VerticalAlignment="Top" Height="48" Width="130" Click="DownBut_Click"/>
+        <Slider x:Name="ScaleSlider" HorizontalAlignment="Left" Margin="530,799,0,0" VerticalAlignment="Top" Width="120" ValueChanged="Slider_ValueChanged" Minimum="10" Maximum="100"/>
+        <Button x:Name="UpBut" Content="Up" HorizontalAlignment="Left" Margin="898,10,0,0" VerticalAlignment="Top" Height="50" Width="136" Click="UpBut_Click_1"/>
+        <Label x:Name="SliderVal" Content="Label" HorizontalAlignment="Left" Margin="548,822,0,0" VerticalAlignment="Top" Width="72"/>
+        <Button x:Name="LoadGridBut" Content="Load Grid" HorizontalAlignment="Left" Margin="301,784,0,0" VerticalAlignment="Top" Height="53" Width="128" Click="LoadGridBut_Click"/>
     </Grid>
 </Window>
